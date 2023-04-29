@@ -29,13 +29,19 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-// 1. loop through an array of object movie titles {return all titles}
-// 2. checking if array is empty, if so return []
-//
+// return an array of strings that represents all movie titles
+//step 1 : create empty array
+//step 2 : set up a for loop 
+//step 3 : as we iterate through movies.title, we push into empty array
 function getAllMovieTitles(movies = []) {
-es
+  let arr = [];
+  for (let i = 0; i < movies.length; i++) {
+    arr.push(movies[i].title)
   }
+  return arr
+}
 
+getAllMovieTitles(movies)
 
 
 /**
@@ -50,10 +56,26 @@ es
  *  //> 96
  */
 
+// Loop through the movies and find the highest metascore
+// step 1: set variable equal to zero
+// step 2: (for/ for of)loop through movies array
+// step 3: get a handle on metascore (get a hold of that value)
+// step 3.5: convert string to number - number constructor (Number())
+// step 4: condition - compare value and metascore
+// step 5: if metascore is bigger than value, set value equal to metascore
+// step 6: return highestSoFar
+
 function getHighestMetascore(movies) {
- 
+  let highestSoFar = 0;
+  for (let movie of movies) {
+    let num = Number(movie.metascore)
+    if (num > highestSoFar) {
+      highestSoFar = num
+    }
+  }
+  return highestSoFar
 }
-  
+
 
 
 /**
@@ -67,11 +89,24 @@ function getHighestMetascore(movies) {
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-// 1. loop through each imdbrating 
-// 2. convert or average out imbd rating
-// 3. return all results
-function getAverageIMDBRating(movies) {
+// add up each of the inmdb ratings and divide by length of array
+// step 1: declare a variable that's equal to zero 
+// step 2: loop through movies
+// step 3: get a handle of imbdRatings
+// step 3.5 : convert string to Number()
+// step 4: once we get that value, we add it to default value
+// step 5:  divide total by length of the array
 
+function getAverageIMDBRating(movies) {
+  let imdbTotal = 0;
+  if(movies.length < 1){
+    return 0;
+  }
+  for (let movie of movies) {
+    imdbTotal += Number(movie.imdbRating)
+  }
+  imdbTotal /= movies.length
+  return imdbTotal
 }
 
 /**
@@ -104,7 +139,7 @@ function countByRating(movies) {
     };
  */
 function findById(movies, id) {
- 
+
 }
 
 /**
@@ -169,7 +204,7 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie() { }
 
 // Do not change anything below this line.
 module.exports = {
