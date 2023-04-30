@@ -99,7 +99,7 @@ function getHighestMetascore(movies) {
 
 function getAverageIMDBRating(movies) {
   let imdbTotal = 0;
-  if(movies.length < 1){
+  if (movies.length < 1) {
     return 0;
   }
   for (let movie of movies) {
@@ -120,10 +120,25 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
+//returning an object with {movie rating: number of movies in the array with that rating}
+// step 1: create an empty object to store the return
+// step 2: Iterate through the movies array 
+//step 3: get a handle of rated
+//step 4: create a condition that will push the movies' rate into the object
+// step 5: use a counter method 
 function countByRating(movies) {
-
+  let movieRateStat = {};
+  for (let movie of movies) {
+    rates = movie.rated
+    if (!movieRateStat[rates]) {
+      movieRateStat[rates] = 1
+    } else {
+      movieRateStat[rates] += 1
+    }
+  }
+  return movieRateStat
 }
-
+countByRating(movies)
 /**
  * findById()
  * -----------------------------
@@ -138,8 +153,20 @@ function countByRating(movies) {
       // Toy Story 4
     };
  */
+//returns movie {}
 function findById(movies, id) {
-
+  if (movies.length < 1) {
+    return null;
+  }
+  let movieObj = {}
+  for (let movie of movies) {
+    let name = movie.title
+    let post = movie.poster
+    if (movie.imdbID === id) {
+      return movie
+    }
+  }
+  return null
 }
 
 /**
